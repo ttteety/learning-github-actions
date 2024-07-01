@@ -1,0 +1,24 @@
+# on:
+#   issues:
+#     types:
+#       - opened
+#       - edited
+#       - closed
+# types: [opened, edited, closed]
+
+# Using Filters to Refine Triggers
+on:
+  push:
+    branches:
+      - main
+      - 'rel/v*'
+    tags:
+      - v1.*
+      - beta
+
+jobs:
+  notify-for-issue:
+    runs-on: ubuntu-latest
+
+    steps:
+      - run: echo "An isse was opened"
